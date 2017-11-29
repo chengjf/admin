@@ -37,4 +37,19 @@ spring:
                 wall:
                     config:
                         multi-statement-allow: true
+jwt:
+  header: Authorization
+  secret: mySecret
+  expiration: 604800
+  tokenHead: "Bearer "
+  route:
+    authentication:
+      path: auth
+      refresh: refresh
+      register: "auth/register"
 
+logging:
+  level:
+    org.springframework:
+      data: DEBUG
+      security: DEBUG.
