@@ -1,5 +1,6 @@
 package com.chengjf.admin.security;
 
+import com.chengjf.admin.component.user.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 

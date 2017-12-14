@@ -57,6 +57,8 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
                     SecurityContextHolder.getContext().setAuthentication(authentication);
                 }
             }
+        } else {
+            logger.error("请求headers没有 " + this.tokenHeader);
         }
 
         filterChain.doFilter(httpServletRequest, httpServletResponse);

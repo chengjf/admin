@@ -1,4 +1,4 @@
-package com.chengjf.admin.security;
+package com.chengjf.admin.component.user;
 
 import com.google.common.collect.Lists;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -17,7 +17,7 @@ public class UserRepository {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
         String encode = encoder.encode(username);
-        LocalDate date = LocalDate.of(2017,2,1);
+        LocalDate date = LocalDate.of(2017, 2, 1);
         User user = User.builder().id(username).username(username).password(encode).email("1@2.com").lastPasswordResetDate(
                 Date.from(date.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant())
         ).roles(

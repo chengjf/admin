@@ -1,5 +1,7 @@
 package com.chengjf.admin.security;
 
+import com.chengjf.admin.component.user.User;
+import com.chengjf.admin.component.user.UserRepository;
 import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -43,7 +45,7 @@ public class AuthServiceImpl implements AuthService {
     @Override
     public User register(User userToAdd) {
         final String username = userToAdd.getUsername();
-        if(userRepository.findByUsername(username)!=null) {
+        if (userRepository.findByUsername(username) != null) {
             return null;
         }
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
@@ -73,7 +75,7 @@ public class AuthServiceImpl implements AuthService {
         final String token = oldToken.substring(tokenHead.length());
         String username = jwtTokenUtil.getUsernameFromToken(token);
         JwtUser user = (JwtUser) userDetailsService.loadUserByUsername(username);
-        if (jwtTokenUtil.canTokenBeRefreshed(token, user.getLastPasswordResetDate())){
+        if (jwtTokenUtil.canTokenBeRefreshed(token, user.getLastPasswordResetDate())) {
             return jwtTokenUtil.refreshToken(token);
         }
         return null;

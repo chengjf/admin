@@ -52,4 +52,4 @@ logging:
   level:
     org.springframework:
       data: DEBUG
-      security: DEBUG.
+      security: DEBUG
